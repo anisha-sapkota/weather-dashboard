@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Link CSS for Bootstrap icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css"
+      integrity="sha512-5PV92qsds/16vyYIJo3T/As4m2d8b6oWYfoqV+vtizRB6KhF1F9kYzWzQmsO6T3z3QG2Xdhrx7FQ+5R1LiQdUA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css"
+      integrity="sha512-ELV+xyi8IhEApPS/pSj66+Jiw+sOT1Mqkzlh8ExXihe4zfqbWkxPRi8wptXIO9g73FSlhmquFlUOuMSoXz5IRw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0/css/bootstrap.min.css"
+      integrity="sha512-XWTTruHZEYJsxV3W/lSXG1n3Q39YIWOstqvmFsdNEEQfHoZ6vm6E9GK2OrF6DSJSpIbRbi+Nn0WDPID9O7xB2Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <title>Weather Dashboard</title>
+  </head>
+  <body>
+    <header class="d-flex justify-content-center p-2">
+      <h1>Weather Dashboard</h1>
+    </header>
+    <div class="container">
+      <div class="row">
+        <aside class="col-md-3">
+          <form>
+            <div class="mb-3">
+              <label for="searchInput" class="form-label">
+                Search for a City
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                id="searchInput"
+                aria-describedby="emailHelp"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          <hr class="border border-primary border-1 opacity-75" />
+        </aside>
+        <main class="col-md-9">
+          <section class="border border-dark p-2">
+            <h2>Sydney (2/9/2022) <i class="bi bi-cloud"></i></h2>
+            <p>Temp: <span id="temp">15&#8451;</span></p>
+            <p>wind: <span id="wind">5 MPH</span></p>
+            <p>Humidity: <span id="humidity">25%</span></p>
+            <p>UV: <span id="uv">0.67</span></p>
+          </section>
+          <h3>5-Day Forecast:</h3>
+          <section class="row g-0">
+            <div class="col p-1" >
+              <div class="border p-2">
+                <h4>3/09/2022</h4>
+                <p>Temp: <span>15&#8451;</span></p>
+                <p>wind: <span>5 MPH</span></p>
+                <p>Humidity: <span>25%</span></p>
+              </div>
+            </div>
+            <div class="col p-1">
+              <div class="border p-2">
+                <h4>3/09/2022</h4>
+                <p>Temp: <span>15&#8451;</span></p>
+                <p>wind: <span>5 MPH</span></p>
+                <p>Humidity: <span>25%</span></p>
+              </div>
+            </div>
+            <div class="col p-1">
+              <div class="border p-2">
+                <h4>3/09/2022</h4>
+                <p>Temp: <span>15&#8451;</span></p>
+                <p>wind: <span>5 MPH</span></p>
+                <p>Humidity: <span>25%</span></p>
+              </div>
+            </div>
+            <div class="col p-1">
+              <div class="border p-2">
+                <h4>3/09/2022</h4>
+                <p>Temp: <span>15&#8451;</span></p>
+                <p>wind: <span>5 MPH</span></p>
+                <p>Humidity: <span>25%</span></p>
+              </div>
+            </div>
+            <div class="col p-1">
+              <div class="border p-2">
+                <h4>3/09/2022</h4>
+                <p>Temp: <span>15&#8451;</span></p>
+                <p>wind: <span>5 MPH</span></p>
+                <p>Humidity: <span>25%</span></p>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0/js/bootstrap.min.js"
+      integrity="sha512-8Y8eGK92dzouwpROIppwr+0kPauu0qqtnzZZNEF8Pat5tuRNJxJXCkbQfJ0HlUG3y1HB3z18CSKmUo7i2zcPpg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+      integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>
