@@ -36,8 +36,8 @@
     </header>
     <div class="container">
       <div class="row">
-        <aside class="col-md-3">
-          <form>
+        <aside id="aside" class="col-md-3 d-flex flex-column">
+          <form id="search" class="d-flex flex-column">
             <div class="mb-3">
               <label for="searchInput" class="form-label">
                 Search for a City
@@ -47,6 +47,7 @@
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
           <hr class="border border-primary border-1 opacity-75" />
+          <div id="recentSearches" class="d-flex flex-column"></div>
         </aside>
         <main class="col-md-9">
           <section class="border border-dark p-2">

@@ -33,19 +33,66 @@ var auCities = {
   },
 };
 
-$("#searchInput").autocomplete({
+var searchInputEl = $("#searchInput");
+
+$(searchInputEl).autocomplete({
   source: Object.keys(auCities),
 });
 
-fetch(
-  "https://api.openweathermap.org/data/2.5/onecall?lat=-37.840935&lon=144.946457&appid=5255353a444216b188ddc85fa361479c&units=metric"
-)
-  .then(function (response) {
-    if (response.ok) {
-      return response.json();
+$("#search").on("submit", handleSearch);
+
+function handleSearch(event) {
+  event.preventDefault();
+  var searchString = $("#searchInput").val();
+  saveToLocalStorage(searchString);
+  renderRecentSearches();
+  getWeatherData(searchString);
+}
+
+function getWeatherData(city) {
+  console.log(city);
+}
+
+// Function for saving search to local-storage
+function saveToLocalStorage(city) {
+  // check for existing data
+  var recentSearches = localStorage.getItem("recentSearches");
+  if (recentSearches) {
+    recentSearches = JSON.parse(recentSearches);
+  } else {
+    recentSearches = [];
+  }
+  // insert to start of array
+  recentSearches.unshift(city);
+  localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
+}
+
+// Function for rendering recent searches from local-storage
+function renderRecentSearches() {
+  // get data from local-storage
+  var recentSearches = localStorage.getItem("recentSearches");
+
+  // if any data
+  if (recentSearches) {
+    var recentSearchesEl = $("#recentSearches");
+    // clear the container
+    $(recentSearchesEl).html("");
+    // convert string to array
+    recentSearches = JSON.parse(recentSearches);
+
+    // for each recent search, create a button and render it
+    for (var item of recentSearches) {
+      var btnEL = $(`<button class="btn btn-secondary mb-2">${item}</button>`);
+      $(btnEL).on("click", (event) => {
+        getWeatherData(event.target.textContent);
+      });
+      $(recentSearchesEl).append(btnEL);
     }
-    throw new Error("HTTP error", response);
-  })
-  .then(function (data) {
-    console.log(data);
-  });
+  }
+}
+
+function init() {
+  renderRecentSearches();
+}
+
+init();
