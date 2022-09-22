@@ -1,3 +1,4 @@
+//  map of AU cities and their lat and long values
 var auCities = {
   Sydney: {
     lat: "-33.865143",
@@ -33,14 +34,15 @@ var auCities = {
   },
 };
 
-var searchInputEl = $("#searchInput");
-
-$(searchInputEl).autocomplete({
+// Auto complete for major AU cities
+$("#searchInput").autocomplete({
   source: Object.keys(auCities),
 });
 
+// call handle search function when form is submitted
 $("#search").on("submit", handleSearch);
 
+// function for handle search
 function handleSearch(event) {
   event.preventDefault();
   var searchString = $("#searchInput").val();
@@ -49,8 +51,55 @@ function handleSearch(event) {
   getWeatherData(searchString);
 }
 
+// fetch weather data using the API
 function getWeatherData(city) {
-  console.log(city);
+  fetch(
+    `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=759e877d7eb31e0c9712b38d32b4c968`
+  )
+    .then((response) => response.json())
+    .then((result) => renderWeatherData(result))
+    .catch((error) => console.log("Error", error));
+}
+
+// function for rendering weather data
+function renderWeatherData(data) {
+  var city = data.city.name;
+  var date = moment(data.list[0].dt, "X").format("DD/MM/YYYY");
+  var temp = data.list[0].main.temp_max;
+  var wind = data.list[0].wind.speed;
+  var humidity = data.list[0].main.humidity;
+
+  $("#cityAndDate").html(
+    `${city} (${date})<img class="icon" src="http://openweathermap.org/img/wn/${data.list[0].weather[0].icon}@2x.png"/>`
+  );
+  $("#temp").text(temp);
+  $("#wind").text(wind);
+  $("#humidity").text(humidity);
+
+  $("#forecast").html("");
+
+  for (var i = 0; i < data.list.length; i += 8) {
+    var containerEl = $('<div class="col p-1">');
+    var parentEl = $('<div class="border p-2">');
+    var dateEl = $(
+      `<h4>${moment(data.list[i].dt, "X").format(
+        "DD/MM/YYYY"
+      )} <img class="icon" src="http://openweathermap.org/img/wn/${
+        data.list[i].weather[0].icon
+      }@2x.png"/> </h4>`
+    );
+    var tempEl = $(
+      `<p>Temp: ${data.list[i].main.temp_max}<span>&#8451;</span></p>`
+    );
+    var windEl = $(`<p>Wind: ${data.list[i].wind.speed}KPH</p>`);
+    var humidityEl = $(`<p>Humidity: ${data.list[i].main.humidity}%</p>`);
+    $(parentEl).append(dateEl);
+    $(parentEl).append(tempEl);
+    $(parentEl).append(windEl);
+    $(parentEl).append(humidityEl);
+    $(containerEl).append(parentEl);
+    $("#forecast").append(containerEl);
+  }
 }
 
 // Function for saving search to local-storage
@@ -91,8 +140,10 @@ function renderRecentSearches() {
   }
 }
 
+// init function
 function init() {
   renderRecentSearches();
 }
 
+// call init
 init();

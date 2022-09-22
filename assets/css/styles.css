@@ -1,3 +1,34 @@
+body {
+  height: 100vh;
+}
+
+/* remove margins for p tags */
 p {
   margin: 0;
+}
+
+header {
+  background-color: #008080;
+  color: white;
+  margin-bottom: 5px;
+}
+
+.icon {
+  height: 50px;
+}
+
+footer {
+  /* Push footer to bottom */
+  margin-top: auto;
+  background-color: #111111;
+  color: white;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer p span {
+  /* change heart color to red */
+  color: red;
 }

@@ -4,14 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Link CSS for Bootstrap icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css"
-      integrity="sha512-5PV92qsds/16vyYIJo3T/As4m2d8b6oWYfoqV+vtizRB6KhF1F9kYzWzQmsO6T3z3QG2Xdhrx7FQ+5R1LiQdUA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+    <!-- jquery-ui -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css"
@@ -19,6 +12,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <!-- bootstrap -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0/css/bootstrap.min.css"
@@ -30,12 +24,14 @@
     <link rel="stylesheet" href="assets/css/styles.css" />
     <title>Weather Dashboard</title>
   </head>
-  <body>
+  <body class="d-flex flex-column">
+    <!-- header -->
     <header class="d-flex justify-content-center p-2">
       <h1>Weather Dashboard</h1>
     </header>
-    <div class="container">
+    <div class="container d-flex flex-column">
       <div class="row">
+        <!-- search bar aside -->
         <aside id="aside" class="col-md-3 d-flex flex-column">
           <form id="search" class="d-flex flex-column">
             <div class="mb-3">
@@ -49,68 +45,33 @@
           <hr class="border border-primary border-1 opacity-75" />
           <div id="recentSearches" class="d-flex flex-column"></div>
         </aside>
+        <!-- main section -->
         <main class="col-md-9">
           <section class="border border-dark p-2">
-            <h2>Sydney (2/9/2022) <i class="bi bi-cloud"></i></h2>
-            <p>Temp: <span id="temp">15&#8451;</span></p>
-            <p>wind: <span id="wind">5 MPH</span></p>
-            <p>Humidity: <span id="humidity">25%</span></p>
-            <p>UV: <span id="uv">0.67</span></p>
+            <h2 id="cityAndDate"></h2>
+            <p>Temp: <span id="temp"></span>&#8451;</p>
+            <p>wind: <span id="wind"></span>KPH</p>
+            <p>Humidity: <span id="humidity"></span>%</p>
           </section>
           <h3>5-Day Forecast:</h3>
-          <section class="row g-0">
-            <div class="col p-1">
-              <div class="border p-2">
-                <h4>3/09/2022</h4>
-                <p>Temp: <span>15&#8451;</span></p>
-                <p>wind: <span>5 MPH</span></p>
-                <p>Humidity: <span>25%</span></p>
-              </div>
-            </div>
-            <div class="col p-1">
-              <div class="border p-2">
-                <h4>3/09/2022</h4>
-                <p>Temp: <span>15&#8451;</span></p>
-                <p>wind: <span>5 MPH</span></p>
-                <p>Humidity: <span>25%</span></p>
-              </div>
-            </div>
-            <div class="col p-1">
-              <div class="border p-2">
-                <h4>3/09/2022</h4>
-                <p>Temp: <span>15&#8451;</span></p>
-                <p>wind: <span>5 MPH</span></p>
-                <p>Humidity: <span>25%</span></p>
-              </div>
-            </div>
-            <div class="col p-1">
-              <div class="border p-2">
-                <h4>3/09/2022</h4>
-                <p>Temp: <span>15&#8451;</span></p>
-                <p>wind: <span>5 MPH</span></p>
-                <p>Humidity: <span>25%</span></p>
-              </div>
-            </div>
-            <div class="col p-1">
-              <div class="border p-2">
-                <h4>3/09/2022</h4>
-                <p>Temp: <span>15&#8451;</span></p>
-                <p>wind: <span>5 MPH</span></p>
-                <p>Humidity: <span>25%</span></p>
-              </div>
-            </div>
-          </section>
+          <section id="forecast" class="row g-0"></section>
         </main>
       </div>
     </div>
-
+    <!-- footer -->
+    <footer>
+      <p>Made with <span>&#10084;</span> by Anisha Sapkota</p>
+    </footer>
+    <!-- jquery -->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
       integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <!-- moment-js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <!-- jquery-ui -->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"
       integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q=="
